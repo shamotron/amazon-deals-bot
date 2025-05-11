@@ -1,0 +1,32 @@
+name: 半額セール取得
+
+# 毎日 0時に実行（UTC基準 → 日本時間午前9時）
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: コードをチェックアウト
+        uses: actions/checkout@v3
+
+      - name: Python セットアップ
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: 依存をインストール
+        run: |
+          pip install amazon-paapi5
+
+      - name: セール情報取得スクリプト実行
+        env:
+          AWS_ACCESS_KEY_ID:      ${{ secrets.AKPAO5EO8K1746190033 }}
+          AWS_SECRET_ACCESS_KEY:  ${{ secrets.ZX0A+TuBlgpk7UA2KyA1iV+JImpVEWwJHJ5lzc6G }}
+          ASSOCIATE_TAG:          ${{ secrets.store03b00-22 }}
+        run: |
+          python fetch_deals.py
+
