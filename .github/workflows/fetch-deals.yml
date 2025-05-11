@@ -24,9 +24,8 @@ jobs:
 
       - name: セール情報取得スクリプト実行
         env:
-          AWS_ACCESS_KEY_ID:      ${{ secrets.AKPAO5EO8K1746190033 }}
-          AWS_SECRET_ACCESS_KEY:  ${{ secrets.ZX0A+TuBlgpk7UA2KyA1iV+JImpVEWwJHJ5lzc6G }}
-          ASSOCIATE_TAG:          ${{ secrets.store03b00-22 }}
+          AWS_ACCESS_KEY_ID:      ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          ASSOCIATE_TAG:          ${{ secrets.ASSOCIATE_TAG }}
         run: |
           python fetch_deals.py
-
